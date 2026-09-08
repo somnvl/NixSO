@@ -37,6 +37,7 @@
       libxi.dev
       libxext.dev
       libxxf86vm.dev
+      xorgproto
     ])
     ++ lib.optionals profile.dev.cDev (with pkgs; [
       gcc
@@ -60,7 +61,7 @@
   home.sessionVariables = lib.optionalAttrs profile.dev.guiDev (let
     guiDevPkgs = with pkgs; [
       libglvnd.dev libx11.dev libxcursor.dev libxrandr.dev
-      libxinerama.dev libxi.dev libxext.dev libxxf86vm.dev
+      libxinerama.dev libxi.dev libxext.dev libxxf86vm.dev xorgproto
     ];
   in {
     PKG_CONFIG_PATH = lib.concatMapStringsSep ":"
