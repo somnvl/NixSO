@@ -58,7 +58,7 @@
     cDev      = false;  # clang, norminette, valgrind, gdb, SDL2...
     pythonDev = false;  # python314 + common libs, ruff, pyright, black
     goDev     = false;  # go, gopls, gotools
-    wailsDev  = false;  # go + node + GTK/webkit dev headers
+    guiDev    = false;  # go + X11/OpenGL dev headers (Fyne)
   };
 
   # Machine-specific hardware config.

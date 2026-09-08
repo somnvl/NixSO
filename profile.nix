@@ -43,7 +43,7 @@
     cDev      = true;
     pythonDev = true;
     goDev     = true;
-    wailsDev  = true;
+    guiDev    = true;
 
     docker = true;
   };
