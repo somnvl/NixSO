@@ -37,6 +37,8 @@
       libxi.dev
       libxext.dev
       libxxf86vm.dev
+      libxrender.dev
+      libxfixes.dev
     ])
     ++ lib.optionals profile.dev.cDev (with pkgs; [
       gcc
@@ -61,6 +63,7 @@
     guiDevPkgs = with pkgs; [
       libglvnd.dev libx11.dev libxcursor.dev libxrandr.dev
       libxinerama.dev libxi.dev libxext.dev libxxf86vm.dev xorgproto
+      libxrender.dev libxfixes.dev
     ];
   in {
     PKG_CONFIG_PATH = lib.concatMapStringsSep ":"
