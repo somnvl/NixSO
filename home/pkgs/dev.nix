@@ -30,13 +30,13 @@
     ])
     ++ lib.optionals profile.dev.guiDev (with pkgs; [
       libGL
-      xorg.libX11
-      xorg.libXcursor
-      xorg.libXrandr
-      xorg.libXinerama
-      xorg.libXi
-      xorg.libXext
-      xorg.libXxf86vm
+      libX11
+      libXcursor
+      libXrandr
+      libXinerama
+      libXi
+      libXext
+      libXxf86vm
     ])
     ++ lib.optionals profile.dev.cDev (with pkgs; [
       gcc
