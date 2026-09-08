@@ -29,14 +29,14 @@
       gotools
     ])
     ++ lib.optionals profile.dev.guiDev (with pkgs; [
-      libGL
-      libx11
-      libxcursor
-      libxrandr
-      libxinerama
-      libxi
-      libxext
-      libxxf86vm
+      libglvnd.dev
+      libx11.dev
+      libxcursor.dev
+      libxrandr.dev
+      libxinerama.dev
+      libxi.dev
+      libxext.dev
+      libxxf86vm.dev
     ])
     ++ lib.optionals profile.dev.cDev (with pkgs; [
       gcc
@@ -56,4 +56,15 @@
       SDL2_ttf
       pkg-config
     ]);
+
+  home.sessionVariables = lib.optionalAttrs profile.dev.guiDev (let
+    guiDevPkgs = with pkgs; [
+      libglvnd.dev libx11.dev libxcursor.dev libxrandr.dev
+      libxinerama.dev libxi.dev libxext.dev libxxf86vm.dev
+    ];
+  in {
+    PKG_CONFIG_PATH = lib.concatMapStringsSep ":"
+      (p: "${p}/lib/pkgconfig:${p}/share/pkgconfig") guiDevPkgs
+      + ":$PKG_CONFIG_PATH";
+  });
 }
