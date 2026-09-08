@@ -65,13 +65,18 @@
       libxinerama.dev libxi.dev libxext.dev libxxf86vm.dev xorgproto
       libxrender.dev libxfixes.dev
     ];
+    guiLibPkgs = with pkgs; [
+      libglvnd libx11 libxcursor libxrandr
+      libxinerama libxi libxext libxxf86vm
+      libxrender libxfixes
+    ];
   in {
     PKG_CONFIG_PATH = lib.concatMapStringsSep ":"
       (p: "${p}/lib/pkgconfig:${p}/share/pkgconfig") guiDevPkgs
       + ":$PKG_CONFIG_PATH";
     CPATH = lib.concatMapStringsSep ":" (p: "${p}/include") guiDevPkgs
       + ":$CPATH";
-    LIBRARY_PATH = lib.concatMapStringsSep ":" (p: "${p}/lib") guiDevPkgs
+    LIBRARY_PATH = lib.concatMapStringsSep ":" (p: "${p}/lib") (guiDevPkgs ++ guiLibPkgs)
       + ":$LIBRARY_PATH";
   });
 }
