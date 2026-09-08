@@ -37,7 +37,6 @@
       libxi.dev
       libxext.dev
       libxxf86vm.dev
-      xorgproto
     ])
     ++ lib.optionals profile.dev.cDev (with pkgs; [
       gcc
